@@ -1,6 +1,7 @@
 import 'package:bank_sha/shared/theme.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
-  int currentIndex = 0;
+  int currentIndex = 1;
   CarouselController carouselController = CarouselController();
 
   List<String> titles = [
@@ -113,39 +114,25 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
             ),
             const SizedBox(
-              height: 24,
+              height: 28,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 12,
-                  height: 12,
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: currentIndex == 0 ? blueColor : lightnewColor,
-                  ),
-                ),
-                Container(
-                  width: 12,
-                  height: 12,
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: currentIndex == 1 ? blueColor : lightnewColor,
-                  ),
-                ),
-                Container(
-                  width: 12,
-                  height: 12,
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: currentIndex == 2 ? blueColor : lightnewColor,
-                  ),
-                ),
-              ],
+            SmoothPageIndicator(
+              controller: PageController(
+                initialPage: 0,
+                viewportFraction: 1.0,
+              ),
+              count: currentIndex,
+              axisDirection: Axis.horizontal,
+              effect: const WormEffect(
+                spacing: 10.0,
+                radius: 4.0,
+                dotWidth: 12.0,
+                dotHeight: 12.0,
+                paintStyle: PaintingStyle.stroke,
+                strokeWidth: 1.5,
+                dotColor: Colors.grey,
+                activeDotColor: Colors.indigo,
+              ),
             ),
             const SizedBox(
               height: 28,

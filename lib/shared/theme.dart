@@ -18,6 +18,8 @@ TextStyle blackTextStyle = GoogleFonts.poppins(
   color: blackColor,
 );
 
+TextStyle lightnewColorTextStyle = GoogleFonts.poppins(color: lightnewColor);
+
 TextStyle whiteTextStyle = GoogleFonts.poppins(
   color: whiteColor,
 );
