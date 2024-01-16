@@ -37,6 +37,10 @@ class _SplashPageState extends State<SplashPage> {
         child: Container(
           width: 155,
           height: 50,
+          margin: const EdgeInsets.symmetric(
+            vertical: 381,
+            horizontal: 110,
+          ),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/img_logo_dark.png'),

@@ -2,6 +2,7 @@ import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/view/pages/onboarding_pages/page1.dart';
 import 'package:bank_sha/view/pages/onboarding_pages/page2.dart';
 import 'package:bank_sha/view/pages/onboarding_pages/page3.dart';
+import 'package:bank_sha/view/pages/sign_up_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -14,21 +15,14 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
-  int currentIndex = 1;
-  CarouselController carouselController = CarouselController();
-  final _controller = PageController();
+  int activeIndex = 0;
+  final CarouselController carouselController = CarouselController();
 
-  // List<String> titles = [
-  //   'Grow Your\nFinancial Today',
-  //   'Build From\nZero to Freedom',
-  //   'Start Together'
-  // ];
-
-  // List<String> subtitles = [
-  //   'Our system is helping you\nachieve a better goal',
-  //   'We provide tips for you so that\nyou can adapt easier',
-  //   'We will guide you to where\nyou wanted it too'
-  // ];
+  List<Widget> onboardpages = const [
+    Page1(),
+    Page2(),
+    Page3(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,8 +55,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               height: 12,
             ),
             Container(
-              width:
-                  360, //360 iki men mepet kanan kirine, nek pakai sesuai di figma engga mepet je
+              width: 327, 
               height: 524,
               margin: const EdgeInsets.symmetric(
                 horizontal: 24,
@@ -72,45 +65,31 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
               decoration: BoxDecoration(
                   color: whiteColor, borderRadius: BorderRadius.circular(20)),
-              child: PageView(
-                controller: _controller,
+              child: Column(
                 children: [
-                  const Page1(),
-                  const Page2(),
-                  const Page3(),
-                  // CarouselSlider(
-                  //   // carouselController: carouselController,
-                  //   items: const [Page1(), Page2(), Page3()],
-                  //   options: CarouselOptions(
-                  //     autoPlay: true,
-                  //     height: 524,
-                  //     viewportFraction: 1,
-                  //     onPageChanged: (index, reason) {
-                  //       setState(
-                  //         () {
-                  //           currentIndex = index;
-                  //           _controller.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.ease); // Add this line
-                  //         },
-                  //       );
-                  //     },
-                  //   ),
-                  // )
+                  CarouselSlider.builder(
+                    carouselController: carouselController,
+                    itemCount: onboardpages.length,
+                    options: CarouselOptions(
+                      initialPage: 0,
+                      height: 476,
+                      viewportFraction: 1,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 2),
+                      onPageChanged: (index, reason) =>
+                          setState(() => activeIndex = index),
+                    ),
+                    itemBuilder: (context, index, realIndex) {
+                      return buildImage(index);
+                    },
+                  ),
                 ],
               ),
             ),
             const SizedBox(
               height: 28,
             ),
-            SmoothPageIndicator(
-              controller: _controller,
-              count: 3,
-              effect: ExpandingDotsEffect(
-                activeDotColor: Colors.deepPurple,
-                dotColor: Colors.deepPurple.shade100,
-                dotHeight: 12,
-                dotWidth: 12,
-              ),
-            ),
+            buildIndicator(),
             const SizedBox(
               height: 28,
             ),
@@ -141,7 +120,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               width: 283,
               height: 50,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUpPage(),
+                    ),
+                  );
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: whiteColor,
                   shape: RoundedRectangleBorder(
@@ -166,4 +152,21 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       ),
     );
   }
+
+  Widget buildImage(int index) => Container(
+        margin: const EdgeInsets.symmetric(horizontal: 12),
+        color: Colors.grey,
+        child:
+            onboardpages[index], // Access the widget from the list using index
+      );
+  Widget buildIndicator() => AnimatedSmoothIndicator(
+        activeIndex: activeIndex,
+        count: onboardpages.length,
+        effect: const JumpingDotEffect(
+          dotColor: Colors.grey,
+          activeDotColor: Colors.blueAccent,
+          dotHeight: 12,
+          dotWidth: 12,
+        ),
+      );
 }
