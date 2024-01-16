@@ -1,4 +1,7 @@
 import 'package:bank_sha/shared/theme.dart';
+import 'package:bank_sha/view/pages/onboarding_pages/page1.dart';
+import 'package:bank_sha/view/pages/onboarding_pages/page2.dart';
+import 'package:bank_sha/view/pages/onboarding_pages/page3.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -13,18 +16,19 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   int currentIndex = 1;
   CarouselController carouselController = CarouselController();
+  final _controller = PageController();
 
-  List<String> titles = [
-    'Grow Your\nFinancial Today',
-    'Build From\nZero to Freedom',
-    'Start Together'
-  ];
+  // List<String> titles = [
+  //   'Grow Your\nFinancial Today',
+  //   'Build From\nZero to Freedom',
+  //   'Start Together'
+  // ];
 
-  List<String> subtitles = [
-    'Our system is helping you\nachieve a better goal',
-    'We provide tips for you so that\nyou can adapt easier',
-    'We will guide you to where\nyou wanted it too'
-  ];
+  // List<String> subtitles = [
+  //   'Our system is helping you\nachieve a better goal',
+  //   'We provide tips for you so that\nyou can adapt easier',
+  //   'We will guide you to where\nyou wanted it too'
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +61,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               height: 12,
             ),
             Container(
-              width: 360,
+              width:
+                  360, //360 iki men mepet kanan kirine, nek pakai sesuai di figma engga mepet je
               height: 524,
               margin: const EdgeInsets.symmetric(
                 horizontal: 24,
@@ -67,49 +72,29 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
               decoration: BoxDecoration(
                   color: whiteColor, borderRadius: BorderRadius.circular(20)),
-              child: Column(
+              child: PageView(
+                controller: _controller,
                 children: [
-                  CarouselSlider(
-                    items: [
-                      Image.asset('assets/img_onboarding1.png', height: 331),
-                      Image.asset('assets/img_onboarding2.png', height: 331),
-                      Image.asset('assets/img_onboarding3.png', height: 331),
-                    ],
-                    options: CarouselOptions(
-                      height: 331,
-                      viewportFraction: 1,
-                      enableInfiniteScroll: true,
-                      autoPlay: true,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          currentIndex = index;
-                        });
-                      },
-                    ),
-                    carouselController: carouselController,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    titles[currentIndex],
-                    style: blackTextStyle.copyWith(
-                      fontSize: 20,
-                      fontWeight: bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    subtitles[currentIndex],
-                    style: greyTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: regular,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                  const Page1(),
+                  const Page2(),
+                  const Page3(),
+                  // CarouselSlider(
+                  //   // carouselController: carouselController,
+                  //   items: const [Page1(), Page2(), Page3()],
+                  //   options: CarouselOptions(
+                  //     autoPlay: true,
+                  //     height: 524,
+                  //     viewportFraction: 1,
+                  //     onPageChanged: (index, reason) {
+                  //       setState(
+                  //         () {
+                  //           currentIndex = index;
+                  //           _controller.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.ease); // Add this line
+                  //         },
+                  //       );
+                  //     },
+                  //   ),
+                  // )
                 ],
               ),
             ),
@@ -117,21 +102,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               height: 28,
             ),
             SmoothPageIndicator(
-              controller: PageController(
-                initialPage: 0,
-                viewportFraction: 1.0,
-              ),
-              count: currentIndex,
-              axisDirection: Axis.horizontal,
-              effect: const WormEffect(
-                spacing: 10.0,
-                radius: 4.0,
-                dotWidth: 12.0,
-                dotHeight: 12.0,
-                paintStyle: PaintingStyle.stroke,
-                strokeWidth: 1.5,
-                dotColor: Colors.grey,
-                activeDotColor: Colors.indigo,
+              controller: _controller,
+              count: 3,
+              effect: ExpandingDotsEffect(
+                activeDotColor: Colors.deepPurple,
+                dotColor: Colors.deepPurple.shade100,
+                dotHeight: 12,
+                dotWidth: 12,
               ),
             ),
             const SizedBox(
