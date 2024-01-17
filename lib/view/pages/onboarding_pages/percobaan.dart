@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
@@ -6,10 +5,10 @@ import 'dart:ui' as ui;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
-  runApp(new MediaQuery(
-      data: new MediaQueryData.fromWindow(ui.window),
-      child: new Directionality(
-          textDirection: TextDirection.rtl, child: new MainPage())));
+  runApp(MediaQuery(
+      data: MediaQueryData.fromView(ui.window),
+      child: const Directionality(
+          textDirection: TextDirection.rtl, child: MainPage())));
 }
 
 class MainPage extends StatefulWidget {

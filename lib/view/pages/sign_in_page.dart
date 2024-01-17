@@ -1,15 +1,14 @@
 import 'package:bank_sha/shared/theme.dart';
-import 'package:bank_sha/view/pages/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignInPageState extends State<SignInPage> {
   bool _obsecureText = true;
   // ignore: unused_field
   String _password = '';
@@ -24,24 +23,13 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         children: [
           SizedBox(
-            height: 45,
-            width: 240,
+            height: 60,
+            width: 191,
             child: Text(
               'Create Account',
               style: blackTextStyle.copyWith(
                 fontWeight: bold,
                 fontSize: 30,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-            width: 151,
-            child: Text(
-              "It's quick and easy",
-              style: greyTextStyle.copyWith(
-                fontSize: 16,
-                fontWeight: regular,
               ),
             ),
           ),

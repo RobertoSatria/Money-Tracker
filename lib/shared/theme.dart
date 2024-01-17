@@ -24,6 +24,10 @@ TextStyle whiteTextStyle = GoogleFonts.poppins(
   color: whiteColor,
 );
 
+TextStyle purpleTextStyle = GoogleFonts.poppins(
+  color: purpleColor,
+);
+
 TextStyle greyTextStyle = GoogleFonts.poppins(
   color: greyColor,
 );
