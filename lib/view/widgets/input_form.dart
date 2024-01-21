@@ -63,13 +63,17 @@ class CustomFormField extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CustomFormPasswordField extends StatefulWidget {
   final String title;
   final String hintText;
-  final bool _obsecureText = true;
-  const CustomFormPasswordField({
+  bool oobsecureText = true;
+  String ppassword = '';
+  CustomFormPasswordField({
     required this.title,
     required this.hintText,
+    this.ppassword = '',
+    this.oobsecureText = true,
     super.key,
   });
 
@@ -79,8 +83,8 @@ class CustomFormPasswordField extends StatefulWidget {
 }
 
 class _CustomFormPasswordFieldState extends State<CustomFormPasswordField> {
-  bool _obsecureText = true;
-  String _password = '';
+  // bool _obsecureText = true;
+  // String _password = '';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -110,20 +114,20 @@ class _CustomFormPasswordFieldState extends State<CustomFormPasswordField> {
             ),
           ),
           child: TextFormField(
-            obscureText: widget._obsecureText,
+            obscureText: widget.oobsecureText,
             onSaved: (value) {
-              _password = value!;
+              widget.ppassword = value!;
             },
             decoration: InputDecoration(
-                hintText: widget.hintText,
+              hintText: widget.hintText,
               suffixIcon: GestureDetector(
                 onTap: () {
                   setState(() {
-                    _obsecureText = !widget._obsecureText;
+                    widget.oobsecureText = !widget.oobsecureText;
                   });
                 },
                 child: Icon(
-                  widget._obsecureText
+                  widget.oobsecureText
                       ? Icons.visibility
                       : Icons.visibility_off,
                 ),
@@ -147,3 +151,4 @@ class _CustomFormPasswordFieldState extends State<CustomFormPasswordField> {
     );
   }
 }
+

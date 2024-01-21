@@ -11,9 +11,9 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  bool _obsecureText = true;
+  // bool _obsecureText = true;
   // ignore: unused_field
-  String _password = '';
+  final String _password = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +58,10 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(
                   height: 16,
                 ),
-                const CustomFormPasswordField(
-                    title: 'Password', hintText: 'Your Password'),
+                CustomFormPasswordField(
+                  title: 'Password',
+                  hintText: 'Your Password',
+                ),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(

@@ -80,12 +80,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 16,
                 ),
-                const CustomFormPasswordField(
+                CustomFormPasswordField(
                     title: 'Password', hintText: 'Your Password'),
                 const SizedBox(
                   height: 16,
                 ),
-                const CustomFormPasswordField(title: 'Retype Password', hintText: 'Retype Your Password'),
+                CustomFormPasswordField(title: 'Retype Password', hintText: 'Retype Your Password'),
                 const SizedBox(
                   height: 28,
                 ),
