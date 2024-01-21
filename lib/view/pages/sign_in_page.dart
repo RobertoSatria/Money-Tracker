@@ -1,5 +1,6 @@
 import 'package:bank_sha/shared/theme.dart';
-import 'package:bank_sha/view/pages/sign_up_page.dart';
+import 'package:bank_sha/view/widgets/buttons.dart';
+import 'package:bank_sha/view/widgets/input_form.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
@@ -52,118 +53,24 @@ class _SignInPageState extends State<SignInPage> {
             child: Column(
               //INI BUAT COLUMN YANG SECARA KESELURUHAN DI DALAM SATU CONTAINERNYA JANGAN DIHAPUS
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Email Address',
-                      style: blackTextStyle.copyWith(
-                        fontSize: 16,
-                        fontWeight: semiBold,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Container(
-                      width: 283,
-                      height: 45,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(
-                            width: 1,
-                            color: Color(0xFFEFEEF1),
-                          ),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                      ),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Your Email Address',
-                          hintStyle: greyTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: regular,
-                          ),
-                          contentPadding: const EdgeInsets.all(12),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              width: 1, // Increase the border thickness here
-                              color: lightGreyColor,
-                            ),
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                const CustomFormField(
+                    title: 'Email Address', hintText: 'Your email Address'),
                 const SizedBox(
                   height: 16,
                 ),
-                SizedBox(
-                  width: 283,
-                  height: 127,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Password',
-                        textAlign: TextAlign.left,
-                        style: blackTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: semiBold,
-                        ),
+                const CustomFormPasswordField(
+                    title: 'Password', hintText: 'Your Password'),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Forgot Password?',
+                      style: blueTextStyle.copyWith(
+                        fontSize: 14,
+                        fontWeight: semiBold,
                       ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      TextFormField(
-                        obscureText: _obsecureText,
-                        onSaved: (value) {
-                          _password = value!;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _obsecureText = !_obsecureText;
-                              });
-                            },
-                            child: Icon(
-                              _obsecureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                          ),
-                          hintStyle: greyTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: regular,
-                          ),
-                          contentPadding: const EdgeInsets.all(12),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              width: 1, // Increase the border thickness here
-                              color: lightGreyColor,
-                            ),
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Forgot Password?',
-                            style: blueTextStyle.copyWith(
-                              fontSize: 14,
-                              fontWeight: semiBold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -195,40 +102,8 @@ class _SignInPageState extends State<SignInPage> {
           const SizedBox(
             height: 24,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Don't have account?",
-                textAlign: TextAlign.center,
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: regular,
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignUpPage(),
-                    ),
-                  );
-                },
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.only(left: 3),
-                ),
-                child: Text(
-                  'Sign Up',
-                  textAlign: TextAlign.left,
-                  style: purpleTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          const TextRowtoTextbutton(
+              textBiasa: "Don't have an account?", textButton: 'Sign Up'),
           const SizedBox(
             height: 36,
           ),
@@ -246,9 +121,19 @@ class _SignInPageState extends State<SignInPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              Container(
                 width: 150,
                 height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(56),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      blurRadius: 4,
+                      offset: const Offset(2, 2),
+                    ),
+                  ],
+                ),
                 child: TextButton(
                   onPressed: () {}, //to home page
                   style: TextButton.styleFrom(
@@ -281,9 +166,19 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(
                 width: 24,
               ),
-              SizedBox(
+              Container(
                 width: 150,
                 height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(56),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      blurRadius: 4,
+                      offset: const Offset(2, 2),
+                    ),
+                  ],
+                ),
                 child: TextButton(
                   onPressed: () {}, //to home page
                   style: TextButton.styleFrom(

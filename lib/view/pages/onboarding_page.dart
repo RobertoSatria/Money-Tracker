@@ -2,7 +2,7 @@ import 'package:bank_sha/shared/theme.dart';
 import 'package:bank_sha/view/pages/onboarding_pages/page1.dart';
 import 'package:bank_sha/view/pages/onboarding_pages/page2.dart';
 import 'package:bank_sha/view/pages/onboarding_pages/page3.dart';
-import 'package:bank_sha/view/pages/sign_up_page.dart';
+import 'package:bank_sha/view/widgets/buttons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -55,7 +55,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               height: 12,
             ),
             Container(
-              width: 327, 
+              width: 327,
               height: 524,
               margin: const EdgeInsets.symmetric(
                 horizontal: 24,
@@ -93,59 +93,30 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             const SizedBox(
               height: 28,
             ),
-            SizedBox(
+            CustomFilledButton(
+              title: 'SIGN IN',
               width: 283,
               height: 50,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: purpleColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(56),
-                  ),
-                ),
-                child: Text(
-                  'SIGN IN',
-                  style: whiteTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
+              bgColor: purpleColor,
+              fontColor: whiteTextStyle,
+              fontSize: 16,
+              fontWeight: bold,
+              onPressed: () {
+                Navigator.pushNamed(context, '/sign-in');
+              },
             ),
             const SizedBox(
               height: 16,
             ),
-            SizedBox(
+            CustomFilledButton(
+              title: 'SIGN UP',
               width: 283,
               height: 50,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignUpPage(),
-                    ),
-                  );
-                },
-                style: TextButton.styleFrom(
-                  backgroundColor: whiteColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(56),
-                    side: const BorderSide(
-                      color: Colors.black,
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-                child: Text(
-                  'SIGN UP',
-                  style: blackTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
+              bgColor: whiteColor,
+              fontColor: blackTextStyle,
+              fontSize: 16,
+              fontWeight: bold,
+              onPressed: () => Navigator.pushNamed(context, '/sign-up'),
             ),
           ],
         ),

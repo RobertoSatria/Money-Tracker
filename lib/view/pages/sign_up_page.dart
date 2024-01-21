@@ -1,5 +1,7 @@
 import 'package:bank_sha/shared/theme.dart';
-import 'package:bank_sha/view/pages/sign_in_page.dart';
+// import 'package:bank_sha/view/pages/sign_in_page.dart';
+import 'package:bank_sha/view/widgets/buttons.dart';
+import 'package:bank_sha/view/widgets/input_form.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -10,9 +12,10 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _obsecureText = true;
   // ignore: unused_field
-  String _password = '';
+  final bool _obsecureText = true;
+  // ignore: unused_field
+  final String _password = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,298 +64,46 @@ class _SignUpPageState extends State<SignUpPage> {
             decoration: BoxDecoration(
                 color: whiteColor, borderRadius: BorderRadius.circular(14)),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Full Name',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: semiBold,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          width: 283,
-                          height: 45,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 1,
-                                color: Color(0xFFEFEEF1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              hintText: 'Your Full Name',
-                              hintStyle: greyTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: regular,
-                              ),
-                              contentPadding: const EdgeInsets.all(12),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  width: 1,
-                                  color: lightGreyColor,
-                                ),
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Email Address',
-                          textAlign: TextAlign.left,
-                          style: blackTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: semiBold,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          width: 283,
-                          height: 45,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 1,
-                                color: Color(0xFFEFEEF1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              hintText: 'Your Email Address',
-                              hintStyle: greyTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: regular,
-                              ),
-                              contentPadding: const EdgeInsets.all(12),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  width:
-                                      1, // Increase the border thickness here
-                                  color: lightGreyColor,
-                                ),
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Password',
-                          textAlign: TextAlign.left,
-                          style: blackTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: semiBold,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          width: 283,
-                          height: 45,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 1,
-                                color: Color(0xFFEFEEF1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
-                          child: TextFormField(
-                            obscureText: _obsecureText,
-                            onSaved: (value) {
-                              _password = value!;
-                            },
-                            decoration: InputDecoration(
-                              hintText: 'Password',
-                              suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _obsecureText = !_obsecureText;
-                                  });
-                                },
-                                child: Icon(
-                                  _obsecureText
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                ),
-                              ),
-                              hintStyle: greyTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: regular,
-                              ),
-                              contentPadding: const EdgeInsets.all(12),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  width:
-                                      1, // Increase the border thickness here
-                                  color: lightGreyColor,
-                                ),
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Column(
-                      //ini belum dibuat logicnya ya, harus sama pokoknya sama password yang di input diatasnya
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Retype Password',
-                          textAlign: TextAlign.left,
-                          style: blackTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: semiBold,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          width: 283,
-                          height: 45,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 1,
-                                color: Color(0xFFEFEEF1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
-                          child: TextFormField(
-                            obscureText: _obsecureText,
-                            onSaved: (value) {
-                              _password = value!;
-                            },
-                            decoration: InputDecoration(
-                              hintText: 'Retype Password',
-                              suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _obsecureText = !_obsecureText;
-                                  });
-                                },
-                                child: Icon(
-                                  _obsecureText
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                ),
-                              ),
-                              hintStyle: greyTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: regular,
-                              ),
-                              contentPadding: const EdgeInsets.all(12),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  width:
-                                      1, // Increase the border thickness here
-                                  color: lightGreyColor,
-                                ),
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    SizedBox(
-                      width: 283,
-                      height: 50,
-                      child: TextButton(
-                        onPressed: () {}, //to home page
-                        style: TextButton.styleFrom(
-                          backgroundColor: purpleColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(56),
-                          ),
-                        ),
-                        child: Text(
-                          'Sign Up',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                const CustomFormField(
+                  title: 'Full Name',
+                  hintText: 'Your Full Name',
                 ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const CustomFormField(
+                  title: 'Email Address',
+                  hintText: 'Your Email Address',
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const CustomFormPasswordField(
+                    title: 'Password', hintText: 'Your Password'),
+                const SizedBox(
+                  height: 16,
+                ),
+                const CustomFormPasswordField(title: 'Retype Password', hintText: 'Retype Your Password'),
+                const SizedBox(
+                  height: 28,
+                ),
+                CustomFilledButton(
+                    title: 'Sign Up',
+                    width: 283,
+                    height: 50,
+                    bgColor: purpleColor,
+                    fontColor: whiteTextStyle,
+                    fontSize: 16,
+                    fontWeight: bold),
               ],
             ),
           ),
           const SizedBox(
             height: 24,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Already have an Account?',
-                textAlign: TextAlign.center,
-                style: greyTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: regular,
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignInPage(),
-                    ),
-                  );
-                },
-                child: Text(
-                  'Sign In',
-                  style: purpleTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: bold,
-                  ),
-                ),
-              ),
-            ],
-          )
+          const TextRowtoTextbutton(textBiasa: 'Already have an Account?', textButton: 'Sign In'),
         ],
       ),
     );

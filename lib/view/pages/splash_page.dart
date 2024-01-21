@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:bank_sha/view/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -13,12 +12,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 4), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const OnBoardingPage(),
-        ),
-      );
+      Navigator.pushNamed(context, '/onboarding');
     });
   }
 
