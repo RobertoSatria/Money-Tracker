@@ -62,18 +62,20 @@ class _SignUpPageState extends State<SignUpPage> {
               horizontal: 22,
             ),
             decoration: BoxDecoration(
-                color: whiteColor, borderRadius: BorderRadius.circular(14)),
+              color: whiteColor,
+              borderRadius: BorderRadius.circular(14),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomFormField(
+                CustomFormField(
                   title: 'Full Name',
                   hintText: 'Your Full Name',
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                const CustomFormField(
+                CustomFormField(
                   title: 'Email Address',
                   hintText: 'Your Email Address',
                 ),
@@ -85,25 +87,31 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 16,
                 ),
-                CustomFormPasswordField(title: 'Retype Password', hintText: 'Retype Your Password'),
+                CustomFormPasswordField(
+                    title: 'Retype Password', hintText: 'Retype Your Password'),
                 const SizedBox(
                   height: 28,
                 ),
                 CustomFilledButton(
-                    title: 'Sign Up',
-                    width: 283,
-                    height: 50,
-                    bgColor: purpleColor,
-                    fontColor: whiteTextStyle,
-                    fontSize: 16,
-                    fontWeight: bold),
+                  title: 'Sign Up',
+                  width: 283,
+                  height: 50,
+                  bgColor: purpleColor,
+                  fontColor: whiteTextStyle,
+                  fontSize: 16,
+                  fontWeight: bold,
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/sign-up-upload-photos');
+                  },
+                ),
               ],
             ),
           ),
           const SizedBox(
             height: 24,
           ),
-          const TextRowtoTextbutton(textBiasa: 'Already have an Account?', textButton: 'Sign In'),
+          const TextRowtoTextbutton(
+              textBiasa: 'Already have an Account?', textButton: 'Sign In'),
         ],
       ),
     );

@@ -3,13 +3,18 @@
 import 'package:bank_sha/shared/theme.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomFormField extends StatelessWidget {
   final String title;
   final String hintText;
+  bool obsecuretext;
+  final TextInputType inputType;
 
-  const CustomFormField({
+  CustomFormField({
     required this.title,
     required this.hintText,
+    this.obsecuretext = true,
+    this.inputType = TextInputType.text,
     super.key,
   });
 
@@ -41,6 +46,8 @@ class CustomFormField extends StatelessWidget {
             ),
           ),
           child: TextFormField(
+            obscureText: obsecuretext,
+            keyboardType: inputType,
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: greyTextStyle.copyWith(
@@ -151,4 +158,3 @@ class _CustomFormPasswordFieldState extends State<CustomFormPasswordField> {
     );
   }
 }
-
