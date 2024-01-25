@@ -54,7 +54,9 @@ class _SignInPageState extends State<SignInPage> {
               //INI BUAT COLUMN YANG SECARA KESELURUHAN DI DALAM SATU CONTAINERNYA JANGAN DIHAPUS
               children: [
                 CustomFormField(
-                    title: 'Email Address', hintText: 'Your email Address'),
+                  title: 'Email Address',
+                  hintText: 'Your email Address',
+                ),
                 const SizedBox(
                   height: 16,
                 ),
