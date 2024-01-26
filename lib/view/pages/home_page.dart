@@ -8,7 +8,59 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: lightBackgroundColor,
-      body: Center(),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: blueColor,
+        unselectedItemColor: blackColor,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedLabelStyle: blueTextStyle.copyWith(
+          fontSize: 10,
+          fontWeight: medium,
+        ),
+        unselectedLabelStyle: blackTextStyle.copyWith(
+          fontSize: 10,
+          fontWeight: medium,
+        ),
+        // selectedIconTheme: ,
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/ic_overview.png',
+              width: 20,
+            ),
+            label: 'Overview',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/ic_history.png',
+              width: 20,
+            ),
+            label: 'History',
+          ),
+          // BottomNavigationBarItem(
+          //   icon: Image.asset(
+          //     'assets/ic_home.png',
+          //     width: 20,
+          //   ),
+          //   label: 'Home',
+          // ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/ic_statistik.png',
+              width: 20,
+            ),
+            label: 'Statistic',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/ic_reward.png',
+              width: 20,
+            ),
+            label: 'Reward',
+          ),
+        ],
+      ),
+      body: const Center(),
     );
   }
 }
