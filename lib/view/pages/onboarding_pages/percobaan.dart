@@ -6,6 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
   runApp(MediaQuery(
+      // ignore: deprecated_member_use
       data: MediaQueryData.fromView(ui.window),
       child: const Directionality(
           textDirection: TextDirection.rtl, child: MainPage())));
