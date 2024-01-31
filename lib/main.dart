@@ -13,14 +13,14 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  @override 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) =>
-            const SplashPage(), //ini buat navigator push named biar naekin performa dari appnya sendiri
+        //ini buat navigator push named biar naekin performa dari appnya sendiri
+        '/': (context) => const SplashPage(),
         '/onboarding': (context) => const OnBoardingPage(),
         '/sign-in': (context) => const SignInPage(),
         '/sign-up': (context) => const SignUpPage(),

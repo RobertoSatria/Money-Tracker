@@ -36,8 +36,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               child: Container(
                 margin: const EdgeInsets.only(right: 24),
                 child: TextButton(
-                  onPressed:
-                      () {}, //jangan lupa dikasih ke home ini ntar diarahin ke situ ngab
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/home-page');
+                  }, //jangan lupa dikasih ke home ini ntar diarahin ke situ ngab
                   child: Padding(
                     padding: const EdgeInsets.only(),
                     child: Text(

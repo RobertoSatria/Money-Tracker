@@ -70,13 +70,48 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         padding: const EdgeInsets.symmetric(
           vertical: 48,
-          horizontal: 24,
+          horizontal: 32,
         ),
         children: [
+          const SizedBox(
+            height: 48,
+          ),
           buildProfile(),
           buildCard(),
           buildProgressBar(),
-          buildCategories(),
+          Text(
+            'Categories',
+            style: blackTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: semiBold,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              HomeCategories(
+                iconUrl: 'assets/ic_top_up.png',
+                title: 'Top Up',
+                onTap: () {},
+              ),
+              HomeCategories(
+                iconUrl: 'assets/ic_send.png',
+                title: 'Send',
+                onTap: () {},
+              ),
+              HomeCategories(
+                iconUrl: 'assets/ic_withdraw.png',
+                title: 'Withdraw',
+                onTap: () {},
+              ),
+              HomeCategories(
+                iconUrl: 'assets/ic_more.png',
+                title: 'More',
+                onTap: () {},
+              ),
+            ],
+          ),
+          buildTransactions(),
         ],
       ),
     );
@@ -116,7 +151,7 @@ class _HomePageState extends State<HomePage> {
           radius: 30,
           backgroundColor: Colors.amber,
           backgroundImage: AssetImage('assets/img_profile.png'),
-        )
+        ),
       ],
     );
   }
@@ -228,53 +263,47 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildCategories() {
-    return Container(
-      margin: const EdgeInsets.only(
-        bottom: 30,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Categories',
-            style: blackTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: bold,
-            ),
+  Widget buildTransactions() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Latest Transactions',
+          style: blackTextStyle.copyWith(
+            fontSize: 16,
+            fontWeight: semiBold,
           ),
-          const SizedBox(
-            height: 14,
+        ),
+        const SizedBox(
+          height: 14,
+        ),
+        Container(
+          width: 400,
+          height: 356,
+          padding: const EdgeInsets.all(22),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: whiteColor,
           ),
-          const Row(
+          child: const Column(
             children: [
-              HomeCategories(
-                imageAsset: 'assets/ic_top_up.png',
+              TfContent(
                 title: 'Top Up',
-                onTap: null,
+                date: 'Yesterday',
+                rupiahs: '+ 450.000',
+                imgUrl: 'assets/ic_top_up.png',
               ),
-              Spacer(),
-              HomeCategories(
-                imageAsset: 'assets/ic_send.png',
-                title: 'Send',
-                onTap: null,
-              ),
-              Spacer(),
-              HomeCategories(
-                imageAsset: 'assets/ic_withdraw.png',
-                title: 'Withdraw',
-                onTap: null,
-              ),
-              Spacer(),
-              HomeCategories(
-                imageAsset: 'assets/ic_more.png',
-                title: 'More',
-                onTap: null,
+              TfContent(
+                title: 'Top Up',
+                date: 'Yesterday',
+                rupiahs: '+ 450.000',
+                imgUrl: 'assets/ic_top_up.png',
               ),
             ],
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
